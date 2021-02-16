@@ -12,7 +12,7 @@ export const FlagsGrid = () => {
   } = useContext(CountriesDataContext);
 
   useEffect(() => {
-    const getCountriesData = async () => {
+    async function getCountriesData() {
       try {
         const { data } = await api.get(API_ENDPOINTS.ALL);
         setCountriesData?.(data);

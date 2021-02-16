@@ -1,4 +1,3 @@
-export const API_URL = "https://restcountries.eu/rest/v2";
 export enum API_ENDPOINTS {
   ALL = "/all",
   BASE = "https://restcountries.eu/rest/v2",

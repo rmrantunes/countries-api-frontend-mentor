@@ -20,7 +20,6 @@ export const Country: React.FC<ICountryProps> = () => {
   useEffect(() => {
     async function getCountry() {
       const { data } = await api.get(`${API_ENDPOINTS.CODE}/${countryCode}`);
-      console.log(data);
       setCountry(data);
     }
 
