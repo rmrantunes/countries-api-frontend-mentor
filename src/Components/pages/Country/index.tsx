@@ -1,7 +1,6 @@
-import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { IAppRoutesParams } from "../../../routes";
 import { api } from "../../../utils/api";
 import {
@@ -15,18 +14,18 @@ export interface ICountryProps extends IApiResponseData {}
 
 export const Country: React.FC<ICountryProps> = () => {
   const [country, setCountry] = useState<IApiResponseData>();
-  const { countryName } = useParams<IAppRoutesParams>();
+  const { countryCode } = useParams<IAppRoutesParams>();
   const history = useHistory();
 
   useEffect(() => {
     async function getCountry() {
-      const { data } = await api.get(`${API_ENDPOINTS.NAME}/${countryName}`);
+      const { data } = await api.get(`${API_ENDPOINTS.CODE}/${countryCode}`);
       console.log(data);
-      setCountry(data[0]);
+      setCountry(data);
     }
 
     getCountry();
-  }, [countryName]);
+  }, [countryCode]);
 
   return (
     <section>
@@ -48,21 +47,22 @@ export const Country: React.FC<ICountryProps> = () => {
               </ThemeChangeWrapper>
             </button>
           </nav>
-          <article className="flex flex-col lg:flex-row gap-8 lg:gap-20">
+          <article className="flex flex-col lg:flex-row gap-8 lg:gap-20 lg:items-center">
             <div className="bg-light-white dark:bg-dark-blue-2 rounded-lg p-2 flex-1">
               <div
                 className="h-96 bg-cover bg-center"
                 // style={{ backgroundImage: `url("${country?.flag}")` }}
               >
                 {country?.flag ? (
-                  <motion.img
+                  <img
                     src={country?.flag}
                     alt={country?.name}
-                    className="block w-full object-cover h-full"
-                    layoutId={country?.flag}
+                    className="block w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="h-full w-full animate-pulse bg-gray-800 opacity-10"></div>
+                  <div className="h-full w-full animate-pulse bg-gray-800 opacity-10">
+                    {country?.flag}
+                  </div>
                 )}
               </div>
             </div>
@@ -95,13 +95,13 @@ export const Country: React.FC<ICountryProps> = () => {
                     </span>
                   </li>
                   <li>
-                    Capital:{" "}
+                    Currencies:{" "}
                     <span className="font-semibold">
                       {country?.currencies?.map(({ code }) => code).join(", ")}
                     </span>
                   </li>
                   <li>
-                    Capital:{" "}
+                    Languages:{" "}
                     <span className="font-semibold">
                       {country?.languages?.map(({ name }) => name).join(", ")}
                     </span>
@@ -113,9 +113,13 @@ export const Country: React.FC<ICountryProps> = () => {
                 <div className="grid grid-cols-6 gap-2">
                   {country &&
                     country?.borders?.map((nearCountry) => (
-                      <span className="py-2 px-4 bg-light-white dark:bg-dark-blue-2 font-semibold text-center shadow-md rounded-lg transform hover:-translate-y-1.5 transition duration-500 cursor-pointer">
+                      <Link
+                        key={nearCountry}
+                        to={`/${nearCountry}`}
+                        className="py-2 px-4 bg-light-white dark:bg-dark-blue-2 font-semibold text-center shadow-md rounded-lg transform hover:-translate-y-1.5 transition duration-500 cursor-pointer"
+                      >
                         {nearCountry}
-                      </span>
+                      </Link>
                     ))}
                 </div>
               </div>

@@ -4,7 +4,7 @@ import { Country } from "./Components/pages/Country";
 import { Home } from "./Components/pages/Home";
 
 export interface IAppRoutesParams {
-  countryName: string;
+  countryCode: string;
 }
 
 export const Routes = () => {
@@ -12,7 +12,7 @@ export const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/:countryName" component={Country} />
+        <Route path="/:countryCode" component={Country} />
       </Switch>
     </BrowserRouter>
   );

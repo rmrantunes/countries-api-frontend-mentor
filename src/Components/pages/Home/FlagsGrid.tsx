@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useContext, useEffect } from "react";
 import { CountriesDataContext } from "../../../Contexts/CountriesData";
-import { API_ENDPOINTS, API_URL } from "../../../utils/api-definitions";
+import { api } from "../../../utils/api";
+import { API_ENDPOINTS } from "../../../utils/api-definitions";
 import { FlagCard } from "./FlagCard";
 
 export const FlagsGrid = () => {
@@ -14,7 +14,7 @@ export const FlagsGrid = () => {
   useEffect(() => {
     const getCountriesData = async () => {
       try {
-        const { data } = await axios.get(API_URL + API_ENDPOINTS.ALL);
+        const { data } = await api.get(API_ENDPOINTS.ALL);
         setCountriesData?.(data);
         setCountriesDataToDisplay?.(data);
       } catch (error) {
@@ -31,13 +31,9 @@ export const FlagsGrid = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-16 py-10">
       {countriesDataToDisplay?.map(
-        ({ flag, name, region, population, capital }) => (
+        ({ flag, name, region, population, capital, alpha3Code }) => (
           <FlagCard
-            flag={flag}
-            name={name}
-            population={population}
-            capital={capital}
-            region={region}
+            {...{ flag, name, region, population, capital, alpha3Code }}
             key={flag}
           />
         )
