@@ -10,11 +10,12 @@ export const FlagCard: React.FC<IFlagCardProps> = ({
   flag,
   name,
   population,
+  alpha3Code,
   region,
   capital,
 }) => {
   return (
-    <Link to={`/${name}`}>
+    <Link to={`/${alpha3Code}`}>
       <ThemeChangeWrapper
         rounded
         className="grid grid-rows-2 max-h-96 shadow-md hover:shadow-lg transform hover:-translate-y-3.5 transition duration-500 cursor-pointer overflow-hidden"
