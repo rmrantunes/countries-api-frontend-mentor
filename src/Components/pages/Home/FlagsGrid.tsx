@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { CountriesDataContext } from "../../../Contexts/CountriesData";
+import { CountriesDataContext } from "../../../contexts/CountriesData";
 import { api } from "../../../utils/api";
 import { API_ENDPOINTS } from "../../../utils/api-definitions";
 import { FlagCard } from "./FlagCard";
@@ -20,7 +20,7 @@ export const FlagsGrid = () => {
       } catch (error) {
         setCountriesData?.(error);
       }
-    };
+    }
 
     getCountriesData();
 

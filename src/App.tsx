@@ -1,6 +1,6 @@
 import { AnimateSharedLayout } from "framer-motion";
 import React from "react";
-import { Header } from "./Components/Header";
+import { Header } from "./components/Header";
 import { Routes } from "./routes";
 
 function App() {

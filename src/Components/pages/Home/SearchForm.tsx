@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { ThemeChangeWrapper } from "../../ThemeChangeWrapper";
 import { twTransition500, twRing } from "../../../utils/theme-tw-classes";
-import { CountriesDataContext } from "../../../Contexts/CountriesData";
+import { CountriesDataContext } from "../../../contexts/CountriesData";
 
 export const SearchForm = () => {
   const [text, setText] = useState("");

@@ -7,6 +7,7 @@ import {
   API_ENDPOINTS,
   IApiResponseData,
 } from "../../../utils/api-definitions";
+import { changePageTitle } from "../../../utils/changePageTitle";
 import { Container } from "../../Container";
 import { ThemeChangeWrapper } from "../../ThemeChangeWrapper";
 
@@ -19,8 +20,11 @@ export const Country: React.FC<ICountryProps> = () => {
 
   useEffect(() => {
     async function getCountry() {
-      const { data } = await api.get(`${API_ENDPOINTS.CODE}/${countryCode}`);
+      const { data } = await api.get<IApiResponseData>(
+        `${API_ENDPOINTS.CODE}/${countryCode}`
+      );
       setCountry(data);
+      changePageTitle(`${data.name} | Countries Info`);
     }
 
     getCountry();

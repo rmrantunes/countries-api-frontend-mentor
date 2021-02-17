@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CountriesDataContext } from "../../../Contexts/CountriesData";
+import { CountriesDataContext } from "../../../contexts/CountriesData";
 import { ThemeChangeWrapper } from "../../ThemeChangeWrapper";
 
 const apiRegions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
