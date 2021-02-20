@@ -1,5 +1,5 @@
 import React from "react";
-import { CountriesDataStore } from "../../../contexts/CountriesData";
+import { CountriesDataStore } from "../../../Contexts/CountriesData";
 import { changePageTitle } from "../../../utils/changePageTitle";
 import { Container } from "../../Container";
 import { FlagsGrid } from "./FlagsGrid";

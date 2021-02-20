@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Country } from "./components/pages/Country";
-import { Home } from "./components/pages/Home";
+import { Country } from "./Components/pages/Country";
+import { Home } from "./Components/pages/Home";
 
 export interface IAppRoutesParams {
   countryCode: string;

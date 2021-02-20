@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { CountriesDataContext } from "../../../contexts/CountriesData";
+import { CountriesDataContext } from "../../../Contexts/CountriesData";
 import { api } from "../../../utils/api";
 import { API_ENDPOINTS } from "../../../utils/api-definitions";
 import { FlagCard } from "./FlagCard";
